@@ -1,0 +1,75 @@
+define start()
+variables choice: integer
+variables running: boolean
+    running := true
+    while running = true
+        Write ""
+        Write "Input number 1 - 3 to pick sample program to test: "
+        Write "1 - Greatest common divisor"
+        Write "2 - Nth Fibonacci term"
+        Write "3 - Boolean comparisons"
+        Write "4 - Exit"
+        Read choice
+        if choice = 1 then
+            gcd
+        elsif choice = 2 then
+            fibonacciRun
+        elsif choice = 3 then
+            booleans
+        elsif choice = 4 then
+            Write "Exiting..."
+            running := false
+        else
+            Write "Invalid input, please enter integer from 1 to 4."
+    Write "Thank you for trying Shank!"
+
+
+define gcd()
+variables num1, num2, result : integer
+    Write "Input two numbers to find the greatest common factor of: "
+    Read num1, num2
+    gcdRec num1, num2, result
+    Write "The greatest common divisor of ", num1, " and ", num2, " is: ", result
+
+
+define gcdRec (a, b : integer; var result: integer)
+    if b = 0 then
+        result := a
+    else
+        a := a % b
+        gcdRec b, a, result
+
+
+define fibonacciRun ()
+variables result, input : integer
+    Write "Enter an integer to find that term in the Fibonacci sequence: "
+    Read input
+    fibonacci input, result
+    Write "Term #", input, " in the Fibonacci sequence is: ", result
+
+
+define fibonacci (max: integer; var output : integer)
+variables first, placeholder, counter : integer
+    if max < 0 then
+        Write "Incorrect input, must be a non-negative integer."
+        output := 0
+    elsif max = 0 then 
+        output := max
+    elsif max = 1 then
+        output := max
+    else
+        first := 0
+        output := 1
+        for counter from 2 to max
+            placeholder := output + first
+            first := output
+            output := placeholder
+
+define booleans()
+variables input1, input2 : real
+    Write "Enter two numbers to check to check comparisons: "
+    Read input1, input2
+    if input1 < input2 then
+        Write input1, " is less than ", input2, "."
+    else
+        Write input1, " is greater than ", input2, "."
